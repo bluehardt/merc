@@ -15,7 +15,7 @@ const wpn_qualities = {
     UNRELIABLE: 'unreliable'
 }
 
-const wpn_quality = {
+const eq_quality = {
     BEST: 'best',
     GOOD: 'good',
     COMMON: 'common',
@@ -38,7 +38,7 @@ const wpn_group = {
     TWO_HANDED: 'two_handed'
 }
 
-const wpn_rarity = {
+const eq_rarity = {
     VERY_RARE: 'very_rare',
     RARE: 'rare',
     SCARCE: 'scarce',
@@ -120,7 +120,7 @@ const wm_sword = new Weapon(
     null, 0,
     null, null,
     [],
-    wpn_quality.COMMON, 10, 50, wpn_rarity.COMMON
+    eq_quality.COMMON, 10, 50, eq_rarity.COMMON
 );
 
 const wm_great_sword = new Weapon(
@@ -129,7 +129,7 @@ const wm_great_sword = new Weapon(
     null, 0,
     null, null,
     [wpn_qualities.IMPACT, wpn_qualities.SLOW],
-    wpn_quality.COMMON, 20, 200, wpn_rarity.AVERAGE
+    eq_quality.COMMON, 20, 200, eq_rarity.AVERAGE
 );
 
 const wm_table_leg = new Weapon(
@@ -138,7 +138,7 @@ const wm_table_leg = new Weapon(
     null, -4,
     null, null,
     [],
-    wpn_quality.GOOD, 0, 35, wpn_rarity.ABUNDANT
+    eq_quality.GOOD, 0, 35, eq_rarity.ABUNDANT
 );
 
 const wm_buckler = new Weapon(
@@ -147,7 +147,7 @@ const wm_buckler = new Weapon(
     null, -4,
     null, null,
     [wpn_qualities.BALANCED, wpn_qualities.DEFENSIVE, wpn_qualities.PUMMELING],
-    wpn_quality.COMMON, 2, 10, wpn_rarity.AVERAGE
+    eq_quality.COMMON, 2, 10, eq_rarity.AVERAGE
 );
 
 const wm_shield = new Weapon(
@@ -156,7 +156,7 @@ const wm_shield = new Weapon(
     null, -2,
     null, null,
     [wpn_qualities.DEFENSIVE, wpn_qualities.SPECIAL],
-    wpn_quality.POOR, 10, 50, wpn_rarity.COMMON
+    eq_quality.POOR, 10, 50, eq_rarity.COMMON
 );
 
 const wr_crossbow = new Weapon(
@@ -165,7 +165,7 @@ const wr_crossbow = new Weapon(
     4, null,
     [30, 60], wpn_reload.FULL,
     [],
-    wpn_quality.COMMON, 25, 120, wpn_rarity.AVERAGE
+    eq_quality.COMMON, 25, 120, eq_rarity.AVERAGE
 );
 
 const wr_bow = new Weapon(
@@ -174,7 +174,7 @@ const wr_bow = new Weapon(
     3, null,
     [24, 48], wpn_reload.HALF,
     [],
-    wpn_quality.COMMON, 10, 80, wpn_rarity.COMMON
+    eq_quality.COMMON, 10, 80, eq_rarity.COMMON
 );
 
 const wr_longbow = new Weapon(
@@ -183,5 +183,5 @@ const wr_longbow = new Weapon(
     3, null,
     [30, 60], wpn_reload.HALF,
     [wpn_qualities.ARMOR_PIERCING],
-    wpn_quality.COMMON, 15, 90, wpn_rarity.AVERAGE
+    eq_quality.COMMON, 15, 90, eq_rarity.AVERAGE
 );

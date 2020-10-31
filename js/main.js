@@ -25,6 +25,12 @@ window.onload = function() {
     const wpn2 = wr_longbow;
     console.log(wpn2.name, wpn2);
 
+    const arm1 = arm_sleeved_mail_coat;
+    console.log(arm1.name, arm1);
+
+    const arm2 = arm_breastplate;
+    console.log(arm2.name, arm2);
+
     const npc1 = new Character();
     npc1.setName('Militiman_1');
     npc1.setRace(race_human);
