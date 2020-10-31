@@ -19,6 +19,12 @@ window.onload = function() {
     console.log(player)
     player.toString();
 
+    const wpn1 = wm_sword;
+    console.log(wpn1.name, wpn1);
+
+    const wpn2 = wr_longbow;
+    console.log(wpn2.name, wpn2);
+
     const npc1 = new Character();
     npc1.setName('Militiman_1');
     npc1.setRace(race_human);
@@ -44,20 +50,23 @@ window.onload = function() {
     beastmen1.setName('Gor_1');
     beastmen1.setRace(race_beastmen_gor);
     beastmen1.rollBaseStats();
-    beastmen1.setCareer(c_none);
     beastmen1.toString();
 
     const beastmen2 = new Character();
     beastmen2.setName('Bestigor_1');
     beastmen2.setRace(race_beastmen_bestigor);
     beastmen2.rollBaseStats();
-    beastmen2.setCareer(c_none);
     beastmen2.toString();
 
     const beastmen3 = new Character();
     beastmen3.setName('Centigor_1');
     beastmen3.setRace(race_beastmen_centigor);
     beastmen3.rollBaseStats();
-    beastmen3.setCareer(c_none);
     beastmen3.toString();
+
+    const beastmen4 = new Character();
+    beastmen4.setName('Ungor_1');
+    beastmen4.setRace(race_beastmen_ungor);
+    beastmen4.rollBaseStats();
+    beastmen4.toString();
 }

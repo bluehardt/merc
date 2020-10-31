@@ -1,14 +1,14 @@
 const stat = {
-    WEAPON_SKILL: 'ws',
-    BALLISTIC_SKILL: 'bs',
-    STRENGTH: 's',
-    THOUGHNESS: 't',
-    AGILITY: 'ag',
-    INTELIGENCE: 'int',
-    WILL_POWER: 'wp',
-    CHARISMA: 'cha',
-    WOUNDS: 'hp',
-    ATTACKS: 'att',
+    WEAPON_SKILL: 'weapon_skill',
+    BALLISTIC_SKILL: 'ballistic_skill',
+    STRENGTH: 'strength',
+    THOUGHNESS: 'thoughness',
+    AGILITY: 'agility',
+    INTELIGENCE: 'inteligence',
+    WILL_POWER: 'will_power',
+    CHARISMA: 'charisma',
+    WOUNDS: 'wounds',
+    ATTACKS: 'attacks',
 };
 
 function roll(dice) {
