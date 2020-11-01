@@ -19,6 +19,39 @@ function roll(dice) {
 }
 
 class Character {
+    // armor = {
+    //     head: {
+    //         slot_light: null,
+    //         slot_medium: null,
+    //         slot_heavy: null,
+    //         total: null
+    //     },
+    //     body: {
+    //         slot_light: null,
+    //         slot_medium: null,
+    //         slot_heavy: null,
+    //         total: null
+    //     },
+    //     arms: {
+    //         slot_light: null,
+    //         slot_medium: null,
+    //         slot_heavy: null,
+    //         total: null
+    //     },
+    //     legs: {
+    //         slot_light: null,
+    //         slot_medium: null,
+    //         slot_heavy: null,
+    //         total: null
+    //     },
+    // }
+
+    armor = null;
+    weapon = {
+        main: wm_unarmed,
+        off: wm_unarmed
+    }
+
     constructor(is_npc = true) {
         this.name = 'Nameless';
         this.race = null;
@@ -28,7 +61,6 @@ class Character {
         this.is_npc = is_npc;
 
         this.setCareer(c_none);
-
     }
 
     setId() {
@@ -46,6 +78,7 @@ class Character {
         this.base_cha += roll(10) + roll(10);
         this.base_hp += roll(4);
 
+        // for the sake of intial rolling
         this.up_ws = 0;
         this.up_bs = 0;
         this.up_s = 0;
@@ -62,6 +95,7 @@ class Character {
     }
 
     calcStats() {
+        // attributes
         this.ws = this.base_ws + this.up_ws;
         this.bs = this.base_bs + this.up_bs;
         this.s = this.base_s + this.up_s;
@@ -74,12 +108,20 @@ class Character {
         this.att = this.base_att + this.up_att;
         this.sb = Math.floor(this.s / 10);
         this.tb = Math.floor(this.t / 10);
+
+        // armor
     }
 
+    /**
+     * @param {string} name 
+     */
     setName(name) {
         this.name = name;
     }
 
+    /**
+     * @param {Race} race 
+     */
     setRace(race) {
         this.race = race.name;
         this.base_ws = race.ws;
@@ -96,6 +138,9 @@ class Character {
         this.calcStats();
     }
 
+    /**
+     * @param {Career} career 
+     */
     setCareer(career) {
         if (this.curr_career !== null) {
             this.past_career.push(this.curr_career);
@@ -114,7 +159,10 @@ class Character {
         this.c_att = Math.max(this.c_att ?? 0, career.att);
     }
 
-    // TODO: make more generic?
+    /**
+     * TODO: make more generic?
+     * @param {stat} attr 
+     */
     upAttr(attr) {
         if (this.exp > 100) {
             let stat_improved = false;
@@ -188,10 +236,14 @@ class Character {
         }
     }
 
+    /**
+     * @param {number} value 
+     */
     addExp(value) {
         this.exp += value;
     }
 
+    // TODO: temporary
     toString() {
         let target = document.getElementsByClassName('char')[0];
 
@@ -200,9 +252,9 @@ class Character {
         target.appendChild(char_div);
 
         let table = document.createElement('table');
-        // ta
         let row, cell;
 
+        // general info
         row = table.insertRow();
         cell = row.insertCell();
         cell.appendChild(document.createTextNode(this.name));
@@ -217,9 +269,91 @@ class Character {
             row = table.insertRow();
             cell = row.insertCell();
             cell.appendChild(document.createTextNode(this.curr_career));
+            cell = row.insertCell();
+            cell.appendChild(document.createTextNode(`[${this.past_career}]`));
         }
 
         char_div.appendChild(table);
+
+        // armor and weapon info
+        if (!this.is_npc) {
+            table = document.createElement('table');
+            
+            row = table.insertRow();
+            cell = row.insertCell();
+            cell.appendChild(document.createTextNode('ARMOR:'));
+            cell = row.insertCell();
+            cell.appendChild(document.createTextNode(this.armor?.name));
+            cell = row.insertCell();
+            cell.appendChild(document.createTextNode(`(${this.armor?.bonus})`));
+
+            row = table.insertRow();
+            cell = row.insertCell();
+            cell.appendChild(document.createTextNode('WEAPON:'));
+            cell = row.insertCell();
+            cell.appendChild(document.createTextNode(this.weapon.main.name));
+            cell = row.insertCell();
+            cell.appendChild(document.createTextNode(`(${this.weapon.main.damage === null ? `SB + (${this.weapon.main.damage_mod})` : this.weapon.main.damage})`));
+
+            char_div.appendChild(table);
+        }
+
+        // if (!this.is_npc) {
+        //     // armor info
+        //     table = document.createElement('table');
+
+        //     row = table.insertRow();
+        //     cell = row.insertCell();
+        //     cell.appendChild(document.createTextNode('head'));
+        //     cell = row.insertCell();
+        //     cell.appendChild(document.createTextNode(this.armor.head.slot_light !== null ? 'X' : '-'));
+        //     cell = row.insertCell();
+        //     cell.appendChild(document.createTextNode(this.armor.head.slot_medium !== null ? 'X' : '-'));
+        //     cell = row.insertCell();
+        //     cell.appendChild(document.createTextNode(this.armor.head.slot_light !== null ? 'X' : '-'));
+        //     cell = row.insertCell();
+        //     cell.appendChild(document.createTextNode(this.armor.head.total ?? 0));
+
+        //     row = table.insertRow();
+        //     cell = row.insertCell();
+        //     cell.appendChild(document.createTextNode('body'));
+        //     cell = row.insertCell();
+        //     cell.appendChild(document.createTextNode(this.armor.body.slot_light !== null ? 'X' : '-'));
+        //     cell = row.insertCell();
+        //     cell.appendChild(document.createTextNode(this.armor.body.slot_medium !== null ? 'X' : '-'));
+        //     cell = row.insertCell();
+        //     cell.appendChild(document.createTextNode(this.armor.body.slot_light !== null ? 'X' : '-'));
+        //     cell = row.insertCell();
+        //     cell.appendChild(document.createTextNode(this.armor.body.total ?? 0));
+
+        //     row = table.insertRow();
+        //     cell = row.insertCell();
+        //     cell.appendChild(document.createTextNode('arms'));
+        //     cell = row.insertCell();
+        //     cell.appendChild(document.createTextNode(this.armor.arms.slot_light !== null ? 'X' : '-'));
+        //     cell = row.insertCell();
+        //     cell.appendChild(document.createTextNode(this.armor.arms.slot_medium !== null ? 'X' : '-'));
+        //     cell = row.insertCell();
+        //     cell.appendChild(document.createTextNode(this.armor.arms.slot_light !== null ? 'X' : '-'));
+        //     cell = row.insertCell();
+        //     cell.appendChild(document.createTextNode(this.armor.arms.total ?? 0));
+
+        //     row = table.insertRow();
+        //     cell = row.insertCell();
+        //     cell.appendChild(document.createTextNode('legs'));
+        //     cell = row.insertCell();
+        //     cell.appendChild(document.createTextNode(this.armor.legs.slot_light !== null ? 'X' : '-'));
+        //     cell = row.insertCell();
+        //     cell.appendChild(document.createTextNode(this.armor.legs.slot_medium !== null ? 'X' : '-'));
+        //     cell = row.insertCell();
+        //     cell.appendChild(document.createTextNode(this.armor.legs.slot_light !== null ? 'X' : '-'));
+        //     cell = row.insertCell();
+        //     cell.appendChild(document.createTextNode(this.armor.legs.total ?? 0));
+
+        //     char_div.appendChild(table);
+        // }
+
+        // attributes
         table = document.createElement('table');
 
         row = table.insertRow();
@@ -314,5 +448,26 @@ class Character {
         cell.appendChild(document.createTextNode(this.att));
 
         char_div.appendChild(table);
+
+        let hr = document.createElement('hr');
+        char_div.appendChild(hr);
+    }
+
+    // EQUIPPING
+    /**
+     * Set weapon in hand(s)
+     * @param {Weapon} weapon 
+     * @param {wpn_hand} hand 
+     */
+    equipWeapon(weapon, hand = wpn_hand.MAIN) {
+        this.weapon.main = weapon;
+    }
+
+    /**
+     * Set armor piece
+     * @param {Armor} armor 
+     */
+    equipArmorPiece(armor) {
+        this.armor = armor;
     }
 }

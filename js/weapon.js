@@ -62,6 +62,11 @@ const wpn_reload = {
     FULL_6: 'full_6',
 }
 
+const wpn_hand = {
+    MAIN: 'main',
+    OFF: 'off'
+}
+
 class Weapon {
     qualities = {
         armor_piercing: false,
@@ -85,6 +90,21 @@ class Weapon {
         penalty: null
     }
 
+    /**
+     * 
+     * @param {string} name 
+     * @param {string} group 
+     * @param {string} type 
+     * @param {number} damage 
+     * @param {number} damage_mod 
+     * @param {number[]} range 
+     * @param {string} reload 
+     * @param {string} qualities 
+     * @param {string} quality 
+     * @param {number} cost 
+     * @param {number} weight 
+     * @param {string} rarity 
+     */
     constructor(name, group, type, damage, damage_mod, range, reload, qualities, quality, cost, weight, rarity) {
         this.name = name;
         this.group = group;
@@ -114,8 +134,17 @@ class Weapon {
     }
 }
 
+const wm_unarmed = new Weapon(
+    'unarmed',
+    wpn_group.ORDINARY, wpn_type.ONE_HANDED,
+    null, -4,
+    null, null,
+    [],
+    eq_quality.COMMON, 0, 0, eq_rarity.COMMON
+);
+
 const wm_sword = new Weapon(
-    'Sword',
+    'sword',
     wpn_group.ORDINARY, wpn_type.ONE_HANDED,
     null, 0,
     null, null,
@@ -123,8 +152,17 @@ const wm_sword = new Weapon(
     eq_quality.COMMON, 10, 50, eq_rarity.COMMON
 );
 
+const wm_knife = new Weapon(
+    'knife',
+    wpn_group.ORDINARY, wpn_type.ONE_HANDED,
+    null, -3,
+    null, null,
+    [],
+    eq_quality.COMMON, 1, 10, eq_rarity.COMMON
+);
+
 const wm_great_sword = new Weapon(
-    'Great sword',
+    'great sword',
     wpn_group.TWO_HANDED, wpn_type.TWO_HANDED,
     null, 0,
     null, null,
@@ -133,7 +171,7 @@ const wm_great_sword = new Weapon(
 );
 
 const wm_table_leg = new Weapon(
-    'Table leg',
+    'table leg',
     wpn_group.ORDINARY, wpn_type.ONE_HANDED,
     null, -4,
     null, null,
@@ -142,7 +180,7 @@ const wm_table_leg = new Weapon(
 );
 
 const wm_buckler = new Weapon(
-    'Buckler',
+    'buckler',
     wpn_group.PARRYING, wpn_type.ONE_HANDED,
     null, -4,
     null, null,
@@ -151,7 +189,7 @@ const wm_buckler = new Weapon(
 );
 
 const wm_shield = new Weapon(
-    'Shield',
+    'shield',
     wpn_group.ORDINARY, wpn_type.ONE_HANDED,
     null, -2,
     null, null,
@@ -160,7 +198,7 @@ const wm_shield = new Weapon(
 );
 
 const wr_crossbow = new Weapon(
-    'Crossbow',
+    'crossbow',
     wpn_group.ORDINARY, wpn_type.TWO_HANDED,
     4, null,
     [30, 60], wpn_reload.FULL,
@@ -169,7 +207,7 @@ const wr_crossbow = new Weapon(
 );
 
 const wr_bow = new Weapon(
-    'Bow',
+    'bow',
     wpn_group.ORDINARY, wpn_type.TWO_HANDED,
     3, null,
     [24, 48], wpn_reload.HALF,
@@ -178,7 +216,7 @@ const wr_bow = new Weapon(
 );
 
 const wr_longbow = new Weapon(
-    'Longbow',
+    'longbow',
     wpn_group.LONGBOW, wpn_type.TWO_HANDED,
     3, null,
     [30, 60], wpn_reload.HALF,

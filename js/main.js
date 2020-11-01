@@ -16,20 +16,11 @@ window.onload = function() {
     player.upAttr(stat.WOUNDS);
     player.upAttr(stat.ATTACKS);
 
+    player.equipArmorPiece(arm_mail_full);
+    player.equipWeapon(wm_knife);
+
     console.log(player)
     player.toString();
-
-    const wpn1 = wm_sword;
-    console.log(wpn1.name, wpn1);
-
-    const wpn2 = wr_longbow;
-    console.log(wpn2.name, wpn2);
-
-    const arm1 = arm_sleeved_mail_coat;
-    console.log(arm1.name, arm1);
-
-    const arm2 = arm_breastplate;
-    console.log(arm2.name, arm2);
 
     const npc1 = new Character();
     npc1.setName('Militiman_1');

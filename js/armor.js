@@ -1,4 +1,4 @@
-const arm_cover = {
+const armor_cover = {
     HEAD: 'head',
     BODY: 'body',
     ARMS: 'arms',
@@ -19,12 +19,21 @@ class Armor {
         legs: false
     }
 
-    constructor(name, type, defence, covered, cost, weigth, rarity) {
+    /**
+     * @param {string} name 
+     * @param {string} type 
+     * @param {number} bonus 
+     * @param {string[]} covered 
+     * @param {number} cost 
+     * @param {number} weight 
+     * @param {string} rarity 
+     */
+    constructor(name, type, bonus, covered, cost, weight, rarity) {
         this.name = name;
         this.type = type;
-        this.defence = defence;
+        this.bonus = bonus;
         this.cost = cost;
-        this.weight = weigth;
+        this.weight = weight;
         this.rarity = rarity;
 
         if (covered.length > 0) {
@@ -39,117 +48,142 @@ class Armor {
     }
 }
 
-// LEATHER
-const arm_leather_skullcap = new Armor(
-    'Leather Skullcap',
+// BASIC ARMORS
+const arm_leather_full = new Armor(
+    'leather armor',
     armor_type.LIGHT,
     1,
-    [arm_cover.HEAD],
+    [armor_cover.HEAD, armor_cover.BODY, armor_cover.ARMS, armor_cover.LEGS],
+    30, 80, eq_rarity.COMMON
+)
+
+const arm_leather_2_full = new Armor(
+    'strenghtened leather armor',
+    armor_type.LIGHT,
+    2,
+    [armor_cover.HEAD, armor_cover.BODY, armor_cover.ARMS, armor_cover.LEGS],
+    50, 120, eq_rarity.AVERAGE
+
+    )
+const arm_mail_full = new Armor(
+    'mail armor',
+    armor_type.LIGHT,
+    3,
+    [armor_cover.HEAD, armor_cover.BODY, armor_cover.ARMS, armor_cover.LEGS],
+    120, 300, eq_rarity.SCARCE
+)
+
+// LEATHER
+const arm_leather_skullcap = new Armor(
+    'leather skullcap',
+    armor_type.LIGHT,
+    1,
+    [armor_cover.HEAD],
     3, 10, eq_rarity.COMMON
 )
 
 const arm_leather_jerkin = new Armor(
-    'Leather Jerkin',
+    'leather jerkin',
     armor_type.LIGHT,
     1,
-    [arm_cover.BODY],
+    [armor_cover.BODY],
     6, 40, eq_rarity.COMMON
 )
 
 const arm_leather_jacket = new Armor(
-    'Leather Jacket',
+    'leather jacket',
     armor_type.LIGHT,
     1,
-    [arm_cover.BODY, arm_cover.ARMS],
+    [armor_cover.BODY, armor_cover.ARMS],
     12, 50, eq_rarity.COMMON
 )
 
 const arm_leather_leggins = new Armor(
-    'Leather Leggins',
+    'leather leggins',
     armor_type.LIGHT,
     1,
-    [arm_cover.LEGS],
+    [armor_cover.LEGS],
     10, 20, eq_rarity.COMMON
 )
 
 // CHAIN
 const arm_mail_coif = new Armor(
-    'Mail Coif',
+    'mail coif',
     armor_type.MEDIUM,
-    3,
-    [arm_cover.HEAD],
-    3+20, 10+30, eq_rarity.AVERAGE
+    2,
+    [armor_cover.HEAD],
+    20, 30, eq_rarity.AVERAGE
 )
 
 const arm_mail_shirt = new Armor(
-    'Mail Shirt',
+    'mail shirt',
     armor_type.MEDIUM,
-    3,
-    [arm_cover.BODY],
-    6+60, 40+60, eq_rarity.AVERAGE
+    2,
+    [armor_cover.BODY],
+    60, 60, eq_rarity.AVERAGE
 )
 
 const arm_sleeved_mail_shirt = new Armor(
-    'Sleeved Mail Shirt',
+    'sleeved mail shirt',
     armor_type.MEDIUM,
-    3,
-    [arm_cover.BODY, arm_cover.ARMS],
-    12+95, 50+80, eq_rarity.AVERAGE
+    2,
+    [armor_cover.BODY, armor_cover.ARMS],
+    95, 80, eq_rarity.AVERAGE
 )
 
 const arm_mail_coat = new Armor(
-    'Mail Coat',
+    'mail coat',
     armor_type.MEDIUM,
-    3,
-    [arm_cover.BODY, arm_cover.LEGS],
-    6+10+75, 40+20+80, eq_rarity.AVERAGE
+    2,
+    [armor_cover.BODY, armor_cover.LEGS],
+    75, 80, eq_rarity.AVERAGE
 )
 
 const arm_sleeved_mail_coat = new Armor(
-    'Sleeved Mail Coat',
+    'sleeved mail coat',
     armor_type.MEDIUM,
-    3,
-    [arm_cover.BODY, arm_cover.ARMS, arm_cover.LEGS],
-    12+10+130, 50+20+100, eq_rarity.AVERAGE
+    2,
+    [armor_cover.BODY, armor_cover.ARMS, armor_cover.LEGS],
+    130, 100, eq_rarity.AVERAGE
 )
 
 const arm_mail_leggins = new Armor(
-    'Mail Leggins',
+    'mail leggins',
     armor_type.MEDIUM,
-    3,
-    [arm_cover.LEGS],
-    10+20, 20+40, eq_rarity.SCARCE
+    2,
+    [armor_cover.LEGS],
+    20, 40, eq_rarity.SCARCE
 )
 
 // PLATE
 const arm_plate_helmet = new Armor(
-    'Helmet',
+    'helmet',
     armor_type.HEAVY,
-    5,
-    [arm_cover.HEAD],
-    3+20+30, 10+30+40, eq_rarity.SCARCE
+    2,
+    [armor_cover.HEAD],
+    30, 40, eq_rarity.SCARCE
 )
 
 const arm_breastplate = new Armor(
-    'Breastplate',
+    'breastplate',
     armor_type.HEAVY,
-    5,
-    [arm_cover.BODY],
-    6+60+70, 40+60+75, eq_rarity.SCARCE
+    2,
+    [armor_cover.BODY],
+    70, 75, eq_rarity.SCARCE
 )
 
 const arm_plate_bracers = new Armor(
-    'Plate Bracers',
+    'plate bracers',
     armor_type.HEAVY,
-    5,
-    [arm_cover.ARMS],
-    6+35+60, 10+20+30, eq_rarity.SCARCE
+    2,
+    [armor_cover.ARMS],
+    60, 30, eq_rarity.SCARCE
 )
 
 const arm_plate_leggins = new Armor(
-    'Plate Leggins',
+    'plate leggins',
     armor_type.HEAVY,
-    5,
-    [arm_cover.LEGS],
-    10+20+70, 20+40+40, eq_rarity.SCARCE
+    2,
+    [armor_cover.LEGS],
+    70, 40, eq_rarity.SCARCE
 )
