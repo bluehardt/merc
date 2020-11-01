@@ -6,6 +6,7 @@
         <script src="js/races.js"></script>
         <script src="js/weapon.js"></script>
         <script src="js/armor.js"></script>
+        <script src="js/combat.js"></script>
         <script src="js/main.js"></script>
     </head>
     <body>
@@ -16,6 +17,9 @@
             
         </div>
 
-        <div class="logs"></div>
+        <div class="logs">
+            <button onclick="startFight(this); this.disabled=true">FIGHT</button>
+            <p>(logs in console)</p>
+        </div>
     </body>
 </html>

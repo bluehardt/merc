@@ -134,7 +134,7 @@ class Weapon {
     }
 }
 
-const wm_unarmed = new Weapon(
+const wm_no_weapon = new Weapon(
     'unarmed',
     wpn_group.ORDINARY, wpn_type.ONE_HANDED,
     null, -4,

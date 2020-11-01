@@ -48,6 +48,14 @@ class Armor {
     }
 }
 
+const arm_no_armor = new Armor(
+    'naked',
+    armor_type.LIGHT,
+    0,
+    [armor_cover.HEAD, armor_cover.BODY, armor_cover.ARMS, armor_cover.LEGS],
+    0, 0, eq_rarity.COMMON
+)
+
 // BASIC ARMORS
 const arm_leather_full = new Armor(
     'leather armor',

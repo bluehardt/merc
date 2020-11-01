@@ -46,11 +46,8 @@ class Character {
     //     },
     // }
 
-    armor = null;
-    weapon = {
-        main: wm_unarmed,
-        off: wm_unarmed
-    }
+    armor = arm_no_armor;
+    weapon = wm_no_weapon;
 
     constructor(is_npc = true) {
         this.name = 'Nameless';
@@ -64,7 +61,7 @@ class Character {
     }
 
     setId() {
-        this.id = `char_${this.name.replace(/\s/g, '').toLowerCase()}_${this.base_ws}${this.base_s}${this.base_t}${this.base_ag}`;
+        this.id = `char_${this.name.replace(/\s/g, '').toLowerCase()}_${this.base_ws}${this.base_bs}${this.base_s}${this.base_t}${this.base_ag}${this.base_int}${this.base_wp}${this.base_cha}`;
     }
 
     rollBaseStats() {
@@ -92,6 +89,9 @@ class Character {
 
         this.calcStats();
         this.setId();
+
+        // initial set of current hp
+        this.curr_hp = this.hp;
     }
 
     calcStats() {
@@ -135,6 +135,7 @@ class Character {
         this.base_hp = race.hp;
         this.base_att = race.att;
 
+        this.rollBaseStats();
         this.calcStats();
     }
 
@@ -219,6 +220,7 @@ class Character {
                 case stat.WOUNDS:
                     if (this.up_hp < this.c_hp) {
                         this.up_hp += 1;
+                        this.curr_hp += 1; // so the wounds are upgraded as well
                         stat_improved = !stat_improved;
                     }
                     break;
@@ -260,10 +262,8 @@ class Character {
         cell.appendChild(document.createTextNode(this.name));
         cell = row.insertCell();
         cell.appendChild(document.createTextNode(`(${this.race})`));
-        if (!this.is_npc) {
-            cell = row.insertCell();
-            cell.appendChild(document.createTextNode(`[${this.exp} exp]`));
-        }
+        cell = row.insertCell();
+        cell.appendChild(document.createTextNode(`[${this.curr_hp}/${this.hp}]`));
 
         if (!this.is_npc) {
             row = table.insertRow();
@@ -291,9 +291,9 @@ class Character {
             cell = row.insertCell();
             cell.appendChild(document.createTextNode('WEAPON:'));
             cell = row.insertCell();
-            cell.appendChild(document.createTextNode(this.weapon.main.name));
+            cell.appendChild(document.createTextNode(this.weapon.name));
             cell = row.insertCell();
-            cell.appendChild(document.createTextNode(`(${this.weapon.main.damage === null ? `SB + (${this.weapon.main.damage_mod})` : this.weapon.main.damage})`));
+            cell.appendChild(document.createTextNode(`(${this.weapon.damage === null ? `SB + (${this.weapon.damage_mod})` : this.weapon.damage})`));
 
             char_div.appendChild(table);
         }
@@ -457,10 +457,10 @@ class Character {
     /**
      * Set weapon in hand(s)
      * @param {Weapon} weapon 
-     * @param {wpn_hand} hand 
+     * @param {string} hand 
      */
     equipWeapon(weapon, hand = wpn_hand.MAIN) {
-        this.weapon.main = weapon;
+        this.weapon = weapon;
     }
 
     /**
