@@ -1,0 +1,24 @@
+{
+  "name": "merc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./js/index.js",
+  "scripts": {
+    "tsc": "./node_modules/.bin/tsc ts/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "typescript": "^4.0.5"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluehardt/merc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bluehardt/merc/issues"
+  },
+  "homepage": "https://github.com/bluehardt/merc#readme"
+}

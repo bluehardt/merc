@@ -1,18 +1,4 @@
-class Race {
-    constructor(name, ws, bs, s, t, ag, int, wp, cha, hp, att) {
-        this.name = name;
-        this.ws = ws;
-        this.bs = bs;
-        this.s = s;
-        this.t = t;
-        this.ag = ag;
-        this.int = int;
-        this.wp = wp;
-        this.cha = cha;
-        this.hp = hp;
-        this.att = att;
-    }
-}
+
 
 const race_human = new Race(
     'Human',
