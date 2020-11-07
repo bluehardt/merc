@@ -9,9 +9,14 @@ function attack(attacker, defendant) {
     if (is_hit) {
         const init_dmg = roll(10);
         
-        let dmg = init_dmg + (attacker.sb + attacker.weapon.damage_mod) - (defendant.tb + defendant.armor.bonus);
+        // check what kind of damage is dealt by weapon
+        let attacker_dmg = attacker.weapon.dmg !== null ? attacker.weapon.damage : (attacker.sb + attacker.weapon.damage_mod);
+
+        // calculating dmg
+        let dmg = init_dmg + attacker_dmg - (defendant.tb + defendant.armor.bonus);
         if (dmg < 0) dmg = 0;
 
+        // lowering hp of defendant
         defendant.curr_hp -= dmg;
         
         let msg = `${attacker.name} [${attacker.curr_hp}/${attacker.hp}] dealt ${dmg} damage to ${defendant.name} [${defendant.curr_hp}/${defendant.hp}] [${hit_roll}%]`;
@@ -24,5 +29,8 @@ function attack(attacker, defendant) {
     } else {
         return `${attacker.name} missed! [${hit_roll}%]`
     }
+}
+
+function rollInitiative() {
     
 }

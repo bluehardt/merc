@@ -470,4 +470,8 @@ class Character {
     equipArmorPiece(armor) {
         this.armor = armor;
     }
+
+    reset() {
+        this.curr_hp = this.hp;
+    }
 }
