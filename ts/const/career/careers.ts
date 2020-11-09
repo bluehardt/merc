@@ -1,3 +1,5 @@
+import { Career } from "../../models/careers";
+
 export const c_none = new Career(
     null,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,

@@ -1,5 +1,5 @@
-class Career {
-    name: string;
+export class Career {
+    name: string | null;
     exit: string[];
 
     ws: number;
@@ -13,7 +13,20 @@ class Career {
     hp: number;
     att: number;
 
-    constructor(name, ws, bs, s, t, ag, int, wp, cha, att, hp, exit) {
+    constructor(
+        name: string | null,
+        ws: number,
+        bs: number,
+        s: number,
+        t: number,
+        ag: number,
+        int: number,
+        wp: number,
+        cha: number,
+        hp: number,
+        att: number,
+        exit: string[]
+    ) {
         this.name = name;
         this.ws = ws;
         this.bs = bs;

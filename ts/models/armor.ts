@@ -1,17 +1,4 @@
-const armor_cover = {
-    HEAD: 'head',
-    BODY: 'body',
-    ARMS: 'arms',
-    LEGS: 'legs'
-}
-
-const armor_type = {
-    LIGHT: 'light',
-    MEDIUM: 'medium',
-    HEAVY: 'heavy'
-}
-
-class Armor {
+export class Armor {
     name: string;
     type: string;
     bonus: number;
@@ -25,16 +12,16 @@ class Armor {
         legs: false
     }
 
-    /**
-     * @param {string} name 
-     * @param {string} type 
-     * @param {number} bonus 
-     * @param {string[]} covered 
-     * @param {number} cost 
-     * @param {number} weight 
-     * @param {string} rarity 
-     */
-    constructor(name, type, bonus, covered, cost, weight, rarity) {
+
+    constructor(
+        name: string,
+        type: string,
+        bonus: number,
+        covered: string[],
+        cost: number,
+        weight: number,
+        rarity: string    
+    ) {
         this.name = name;
         this.type = type;
         this.bonus = bonus;

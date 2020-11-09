@@ -1,5 +1,6 @@
 import { eq_quality, eq_rarity } from "../../enums/equipment";
 import { wpn_group, wpn_qualities, wpn_reload, wpn_type } from "../../enums/weapon";
+import { Weapon } from "../../models/weapon";
 
 export const wr_crossbow = new Weapon(
     'crossbow',

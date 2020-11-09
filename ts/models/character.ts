@@ -1,12 +1,20 @@
+import { arm_no_armor } from "../const/armor";
+import { c_none } from "../const/career";
+import { wm_no_weapon } from "../const/weapon";
 import { attribute } from "../enums/character/attribute.enum";
+import { wpn_hand } from "../enums/weapon";
 import { roll } from "../helpers";
+import { Armor } from "./armor";
+import { Career } from "./careers";
+import { Race } from "./races";
+import { Weapon } from "./weapon";
 
-class Character {
+export class Character {
     id: string = '';
     name: string;
-    race: Race | null;
+    race: string | null;
     past_career: string[];
-    curr_career: string;
+    curr_career: string | null;
     exp: number;
     is_npc: boolean;
     curr_hp: number = 0;
@@ -154,10 +162,7 @@ class Character {
         this.calcStats();
     }
 
-    /**
-     * @param {Career} career 
-     */
-    setCareer(career) {
+    setCareer(career: Career) {
         if (this.curr_career !== null) {
             this.past_career.push(this.curr_career);
         }
@@ -253,10 +258,7 @@ class Character {
         }
     }
 
-    /**
-     * @param {number} value 
-     */
-    addExp(value) {
+    addExp(value: number) {
         this.exp += value;
     }
 
@@ -283,7 +285,7 @@ class Character {
         if (!this.is_npc) {
             row = table.insertRow();
             cell = row.insertCell();
-            cell.appendChild(document.createTextNode(this.curr_career));
+            cell.appendChild(document.createTextNode(`${this.curr_career}`));
             cell = row.insertCell();
             cell.appendChild(document.createTextNode(`[${this.past_career}]`));
         }
@@ -469,20 +471,11 @@ class Character {
     }
 
     // EQUIPPING
-    /**
-     * Set weapon in hand(s)
-     * @param {Weapon} weapon 
-     * @param {string} hand 
-     */
-    equipWeapon(weapon, hand = wpn_hand.MAIN) {
+    equipWeapon(weapon: Weapon, hand = wpn_hand.MAIN) {
         this.weapon = weapon;
     }
 
-    /**
-     * Set armor piece
-     * @param {Armor} armor 
-     */
-    equipArmorPiece(armor) {
+    equipArmorPiece(armor: Armor) {
         this.armor = armor;
     }
 }

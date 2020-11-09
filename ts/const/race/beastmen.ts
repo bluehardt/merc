@@ -1,3 +1,5 @@
+import { Race } from "../../models/races"
+
 export const race_beastmen_gor = new Race(
     'Beastmen - Gor',
     30, 15, 25, 34, 25, 16, 15, 15, 10, 1

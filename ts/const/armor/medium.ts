@@ -1,4 +1,6 @@
+import { armor_cover, armor_type } from "../../enums/armor"
 import { eq_rarity } from "../../enums/equipment"
+import { Armor } from "../../models/armor"
 
 
 // BASIC

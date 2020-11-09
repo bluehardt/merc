@@ -1,3 +1,7 @@
+import { eq_quality, eq_rarity } from "../../enums/equipment";
+import { wpn_group, wpn_qualities, wpn_type } from "../../enums/weapon";
+import { Weapon } from "../../models/weapon";
+
 export const wm_no_weapon = new Weapon(
     'unarmed',
     wpn_group.ORDINARY, wpn_type.ONE_HANDED,

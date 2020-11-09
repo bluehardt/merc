@@ -1,7 +1,12 @@
-import { race_elf } from "./const/race";
+import { attack } from "./combat";
+import { arm_leather_full } from "./const/armor";
+import { c_none, c_peasant } from "./const/career";
+import { race_beastmen_bestigor, race_elf } from "./const/race";
+import { wm_sword } from "./const/weapon";
+import { Character } from "./models/character";
 
-player = null;
-enemy1 = null;
+let player: Character;
+let enemy1: Character;
 
 window.onload = function() {
     player = new Character(false);
@@ -41,16 +46,9 @@ window.onload = function() {
     enemy1.toString();
 
     console.log(enemy1);
-
-    enemy2 = new Character();
-    enemy2.setName('Joe the Beast');
-    enemy2.setRace(race_beastmen_bestigor);
-    enemy2.setCareer(c_none);
-    enemy2.equipWeapon(wm_sword);
-    enemy2.toString();
 }
 
-function startFight(button) {
+function startFight(button: any) {
     console.clear();
 
     let turn = 0;

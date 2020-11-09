@@ -1,3 +1,5 @@
+import { Race } from "../../models/races"
+
 export const race_human = new Race(
     'Human',
     20, 20, 20, 20, 20, 20, 20, 20, 9, 1

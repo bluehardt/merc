@@ -2,7 +2,7 @@
 import { eq_quality, eq_rarity } from "../enums/equipment";
 import { wpn_group, wpn_qualities, wpn_reload, wpn_type } from "../enums/weapon";
 
-class Weapon {
+export class Weapon {
     name: string;
     group: wpn_group;
     type: wpn_type;
@@ -48,7 +48,8 @@ class Weapon {
         quality: eq_quality,
         cost: number,
         weight: number,
-        rarity: eq_rarity) {
+        rarity: eq_rarity
+    ) {
         this.name = name;
         this.group = group;
         this.type = type;

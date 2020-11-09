@@ -1,4 +1,4 @@
-class Race {
+export class Race {
     name: string;
     ws: number;
     bs: number;
@@ -23,7 +23,7 @@ class Race {
         cha: number,
         hp: number,
         att: number
-        ) {
+    ) {
         this.name = name;
         this.ws = ws;
         this.bs = bs;
